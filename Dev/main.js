@@ -10,6 +10,13 @@ let timer=false;
 let totalTime=30;
 let setIntervalTimer=null;
 
+//variables of audio
+let winAudio= new Audio('./sounds/win.wav');
+let loseAudio= new Audio('./sounds/lose.wav');
+let clickAudio= new Audio('./sounds/click.wav');
+let rightAudio= new Audio('./sounds/right.wav');
+let wrongAudio= new Audio('./sounds/wrong.wav');
+
 
 //point to a  html document
 let showmMovements=document.getElementById('movimientos');
@@ -27,20 +34,11 @@ function blockCards(){
 	for (var i = 0; i < 16; i++) {
 		let blockCard=document.getElementById(i);
 		if(blockCard.classList.contains("greencards")==false){
-			blockCard.innerHTML=numbers[i];
+			blockCard.innerHTML=`<img class="img-dec" src="./img/${numbers[i]}.png">`;
 			blockCard.disabled=true;
 			blockCard.classList.add("redcards");
 		}
 	}
-
-	for (var i = 0; i < 16; i++) {
-		let blockCardd=document.getElementById(i);
-		if(blockCardd.disabled==false){
-			blockCardd.innerHTML=numbers[i];
-			blockCardd.disabled=true;
-	
-		}
-	}	
 }
 
 //function countTime
@@ -49,8 +47,9 @@ function countTime(){
 		totalTime--;
 		showTime.innerHTML=`Tiempo: ${totalTime} segundos`;
 		if(totalTime==0){
-			clearInterval(setIntervalTimer);//detenemos el timer al llehar a 0 segundos
+			clearInterval(setIntervalTimer);//stop the timer when it come to 0 segundos
 			blockCards();
+			loseAudio.play(); //we play the audio when the player loses and he runs out of tiempo
 		}
 	},1000);
 }
@@ -66,10 +65,13 @@ function destapar(id){
 	uncoveredcards++;
 
 	if (uncoveredcards == 1) {
+		//clickAudio
+		clickAudio.play();
+
 		//show first number
 		card1=document.getElementById(id);
 		result1=numbers[id];		
-		card1.innerHTML=result1;
+		card1.innerHTML=`<img class="img-dec" src="./img/${result1}.png">`;
 
 		//disable first button
 		card1.disabled=true;
@@ -77,7 +79,7 @@ function destapar(id){
 		//show second number
 		card2=document.getElementById(id);
 		result2=numbers[id];
-		card2.innerHTML=result2;
+		card2.innerHTML=`<img class="img-dec" src="./img/${result2}.png">`;
 
 		//disable second button
 		card2.disabled=true;
@@ -98,12 +100,20 @@ function destapar(id){
 			//increase hits
 			hits++;
 			showHits.innerHTML=`Aciertos: ${hits}`;
+
+			//play righAudio
+			rightAudio.play();
+
 			if(hits==8){
 				clearInterval(setIntervalTimer);//stop the timer if before finish it at 8 hits .
 				showHits.innerHTML+=` 🥳`;
 				showmMovements.innerHTML+=` 👀`;
+				winAudio.play();
 			}
 		}else if (totalTime>0){
+			//play wrongAudio
+			wrongAudio.play();
+
 			//show momentarily values  and to cover again
 			setTimeout(()=>{
 				card1.innerHTML='';
