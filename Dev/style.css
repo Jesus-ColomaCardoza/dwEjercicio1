@@ -85,6 +85,37 @@ a{
 	width: 80%;
 }
 
+@media screen and (max-width: 480px){
+	body{
+		margin-top:30px;
+	}
+
+	button{
+		height: 90px;
+		width: 90px;
+	}
+
+	.section1{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		border-bottom-left-radius:0px ;
+		border-bottom-right-radius:0px ;
+
+	}
+
+	.section2{
+		padding: 0px 30px;
+		border-bottom-left-radius:10px ;
+		border-top-right-radius: 0px;
+	}
+	.estadistica{
+		font-size: 15px;
+		min-height: 10px;
+	}
+
+
+}
 @media screen and (max-width: 320px){
 	body{
 		margin-top:80px;
