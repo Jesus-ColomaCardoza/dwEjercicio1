@@ -100,7 +100,7 @@ function destapar(id){
 			showHits.innerHTML=`Aciertos: ${hits}`;
 			if(hits==8){
 				clearInterval(setIntervalTimer);//stop the timer if before finish it at 8 hits .
-				showHits.innerHTML+=` 🥳`;
+				showHits.innerHTML+=` 🥳🥳🥳🥳`;
 				showmMovements.innerHTML+=` 👀`;
 			}
 		}else if (totalTime>0){
