@@ -82,7 +82,8 @@ a{
 }
 
 .img-dec{
-	width: 80%;
+	height: 85px;
+		width: 85px;
 }
 
 
@@ -116,7 +117,8 @@ a{
 	}
 
 	.img-dec{
-		width: 80%;
+		height: 85px;
+		width: 85px;
 	}
 }
 @media screen and (max-width: 320px){
