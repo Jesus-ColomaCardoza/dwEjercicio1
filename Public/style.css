@@ -82,8 +82,9 @@ a{
 }
 
 .img-dec{
+	width: 85px;
 	height: 85px;
-		width: 85px;
+	
 }
 
 
@@ -117,8 +118,8 @@ a{
 	}
 
 	.img-dec{
-		height: 85px;
 		width: 85px;
+		height: 85px;
 	}
 }
 @media screen and (max-width: 320px){
@@ -131,6 +132,10 @@ a{
 		width: 50px;
 	}
 
+	.img-dec{
+		height: 45px;
+		width: 45px;
+	}
 	.section1{
 		display: flex;
 		flex-wrap: wrap;
